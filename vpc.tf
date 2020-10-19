@@ -5,3 +5,4 @@ resource "aws_vpc" "javahome_vpc" {
     Name = "demo1-vpc_JJ"
   }
 }
+# test
