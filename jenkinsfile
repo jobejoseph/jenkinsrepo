@@ -1,1 +1,24 @@
 
+pipeline{
+  agent any
+  tools {
+    terraform 'Terraform'
+  }
+  stages{
+    stage('Git checkout'){
+      steps{
+       git branch: 'main', credentialsId: '63a89173-903e-4b29-96f8-0f8301146ecd', url: 'https://github.com/jobejoseph/jenkinsrepo'
+      }
+    }
+    stage('terraform init'){
+      steps{
+        sh "terraform init"
+      }
+    }
+   stage('terraform apply'){
+      steps{
+        sh "terraform apply --auto-approve"
+      }
+    }
+  }
+}
